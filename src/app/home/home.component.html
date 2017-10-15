@@ -1,0 +1,124 @@
+<div class="wrapper">
+  <div class="header header-filter parallax" style="background-image: url('../../assets/img/banner-bg.jpg'); background-size: cover; background-position: top center;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5 col-md-offset-3 col-sm-6 col-sm-offset-3">
+          <div class="card card-signup">
+
+            <div class="header header-primary text-center">
+              <h4 class="search-title">Search for your dream property</h4>
+
+              <div class="content">
+                <ul class="nav nav-pills nav-pills-default row" role="tablist">
+                  <li class="active col-md-offset-1 col-md-5 col-sm-5">
+                    <a href="#rent" class="tab" role="tab" data-toggle="tab">Rent</a>
+                  </li>
+                  <li class="col-md-5 col-sm-5">
+                    <a href="#buy" class="tab" role="tab" data-toggle="tab">Buy</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="content">
+              <div class="tab-content">
+                <div id="rent" class="tab-pane fade in active">
+                  <form class="form" [formGroup]="rentForm" (ngSubmit)="rentSearch(rentForm.value)">
+                    <div class="form-group label-floating">
+                      <label class="control-label">Property</label>
+                      <select class="form-control" formControlName="propertyType">
+                          <option value="land">Land</option>
+                          <option value="houses">Apartment</option>
+                          <option value="office">Office Space</option>
+                        </select>
+                    </div>
+
+
+                    <div class="form-group label-floating">
+                      <label class="control-label">Location</label>
+                      <select class="form-control" formControlName="location">
+											<option value="westIndies">West Indies</option> 
+											<option value="elgonView">Elgon View</option>
+                      <option value="kokwas">Kokwas</option>
+                      <option value="pioneer">Pioneer</option>
+										</select>
+                    </div>
+
+
+                    <div class="form-group label-floating">
+                      <label class="control-label">Bedrooms</label>
+                      <input type="number" class="form-control" formControlName="bedrooms" >
+                    </div>
+
+
+                    <div class="form-group label-floating">
+                      <label class="control-label" style="margin-bottom:10px; font-size:14px;">Price</label>
+                      <nouislider [formControl]="rentForm.controls.price"  [config]="someRange2config" class="form-control"></nouislider>
+                    </div>
+
+                    <div class="footer text-center">
+                        <button type="submit" class="btn btn-primary btn-round" ><i class="material-icons">search</i> Search</button>
+                      </div>
+                  </form>
+                </div>
+
+
+
+
+
+
+
+
+
+                <div id="buy" class=" tab-pane fade in">
+                  <form class="form" [formGroup]="buyForm" (ngSubmit)="buySearch(buyForm.value)">
+                    <div class="form-group label-floating">
+                      <label class="control-label">Property</label>
+                      <select class="form-control" formControlName="propertyType">
+                          <option value="land">Land</option>
+                          <option value="houses">Apartment</option>
+                          <option value="office">Office Space</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group label-floating">
+                      <label class="control-label">Location</label>
+                      <select class="form-control" formControlName="location" >
+                                        <option>West Indies</option>
+                                        <option>Elgon View</option>
+                                        <option>Kokwas</option>
+                                      </select>
+                    </div>
+
+
+                    <div class="form-group label-floating">
+                      <label class="control-label">Size (acres)</label>
+                      <input type="number" class="form-control" formControlName="size" >
+                    </div>
+
+                    <div class="form-group label-floating">
+                      <label>Price</label>
+                      <nouislider [config]="someBuyRange2config" [formControl]="buyForm.controls.price"></nouislider>
+                    </div>
+
+                    <div class="footer text-center">
+                        <button type="submit" class="btn btn-primary btn-round"><i class="material-icons">search</i> Search</button>
+                      </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <app-latest-properties></app-latest-properties>
+
+
+  <app-contact></app-contact>
+
+
+</div>
