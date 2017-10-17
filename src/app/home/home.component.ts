@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase} from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -55,7 +58,7 @@ export class HomeComponent implements OnInit {
       size:new FormControl("",Validators.required)
     });
 
-    this.fireDB.list('/properties').subscribe(res => this.propertyTypes = res);
+    this.fireDB.list('/properties').valueChanges();
     
 
   }
