@@ -6,13 +6,14 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
-
+import { AppRoutingModule } from './app-routing/app-routing.module'
 //import auth,database and storage credentials
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LatestPropertiesComponent } from './latest-properties/latest-properties.component';
 import { ContactComponent } from './contact/contact.component';
+import { PropertyListComponent } from './property-list/property-list.component';
 
 @NgModule({
   declarations: [
@@ -20,16 +21,19 @@ import { ContactComponent } from './contact/contact.component';
     HomeComponent,
     LatestPropertiesComponent,
     ContactComponent,
+    PropertyListComponent,
 
   ],
   imports: [
     BrowserModule,
+    NouisliderModule,
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    NouisliderModule
+    NouisliderModule,
+    AppRoutingModule
   ],
   providers: [AngularFireDatabase],
   bootstrap: [AppComponent]
