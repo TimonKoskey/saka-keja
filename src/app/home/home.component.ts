@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
-import { AngularFireDatabase} from 'angularfire2/database';
-import { Observable } from 'rxjs/Observable';
-
+import { Router } from '@angular/router';
+import { Property } from '../models/property';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +14,7 @@ export class HomeComponent implements OnInit {
   someBuyRange2config:any;
   rentForm:FormGroup;
   buyForm:FormGroup;
-  constructor(private fb:FormBuilder,private fireDB:AngularFireDatabase) {}
+  constructor(private fb:FormBuilder,private router:Router) {}
 
   ngOnInit() {
 
@@ -48,7 +47,6 @@ export class HomeComponent implements OnInit {
       price:new FormControl([20000,30000],Validators.required),
       location:new FormControl("",Validators.required),
       bedrooms:new FormControl("",Validators.required),
-      size:new FormControl("",Validators.required)
     });
 
     this.buyForm = this.fb.group({
@@ -58,36 +56,32 @@ export class HomeComponent implements OnInit {
       size:new FormControl("",Validators.required)
     });
 
-    this.fireDB.list('/properties').valueChanges();
-    
-
   }
 
 
   rentSearch(value){
-    let $key = value.propertyType;
-    let propertyType = this.findPropertyTypeByKey($key,this.propertyTypes);
-    propertyType['for_rent'].forEach((property)=>{
-      if(property.location==value.location&&property.rent<=value.price[1]&&property.rent>=value.price[0]&&property.numberOfRooms<=value.bedrooms){
-        console.log(property,"found");
-      }
-    });
+   
+    let property:Property={
+     location : value.location,
+     numberOfRooms : value.bedrooms,
+      min_price : value.price[0],
+      max_price : value.price[1]
+    }; 
+    
+    this.router.navigate(['/listings','rent'],{queryParams:property});
 
   }
 
   buySearch(value){
-    console.log(value);
+    let property:Property={
+      location : value.location,
+      size : value.size,
+      min_price : value.price[0],
+      max_price : value.price[1]
+     }; 
+    this.router.navigate(['/listings','buy'],{queryParams:property});
   }
 
-  findPropertyTypeByKey($key:string,propertyTypes:any[]){
-    let prop:any;
-    propertyTypes.forEach((propertyType) => {
-      if(propertyType.$key==$key){
-        prop = propertyType
-      }
-    });
-
-    return prop;
-  }
+  
 
 }
