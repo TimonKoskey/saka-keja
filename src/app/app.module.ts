@@ -28,7 +28,8 @@ import { ContactComponent } from './contact/contact.component';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    NouisliderModule
   ],
   providers: [AngularFireDatabase],
   bootstrap: [AppComponent]
