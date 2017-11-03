@@ -1,5 +1,5 @@
 <div class="signup-page">
-	<nav class="navbar" [ngClass]="{'navbar-transparent navbar-absolute':homeNavbarStyle}">
+	<nav class="navbar" [ngClass]="{'navbar-transparent':true}">
     	<div class="container">
         	<!-- Brand and toggle get grouped for better mobile display -->
         	<div class="navbar-header">
@@ -15,12 +15,12 @@
         	<div class="collapse navbar-collapse" id="navigation-example">
         		<ul class="nav navbar-nav navbar-right">
 					<li>
-    					<a routerLink="/listings/rent" target="_blank">
+    					<a routerLink="/listings/rent">
     						For Rent
     					</a>
     				</li>
     				<li>
-						<a href="#" target="_blank">
+						<a href="#">
 							For Sale
 						</a>
             </li>
@@ -52,7 +52,7 @@
     <footer class="footer">
         <div class="separator-line"></div>
 		        <div class="container">
-		            <nav class="pull-left">
+		            <nav class="text-center">
 						<ul>
 							
 							<li>
@@ -72,7 +72,7 @@
 							</li>
 						</ul>
 		            </nav>
-		            <div class="copyright pull-right" >
+		            <div class="copyright text-center" >
 		                &copy; 2017, Saka Keja.
 		            </div>
 		        </div>

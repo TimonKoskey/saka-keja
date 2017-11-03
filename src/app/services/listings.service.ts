@@ -8,41 +8,40 @@ export class ListingsService {
 
   private propertyPath = '/properties';
 
-  constructor(private fireDB:AngularFireDatabase) {
-    
+  constructor(private fireDB: AngularFireDatabase) {
    }
 
-  getAllHousesForRent(query={}):Observable<any>{
-   return this.fireDB.list(this.propertyPath,(query) => query.child('houses').child('for_rent')).valueChanges();
+  getAllHousesForRent(query= {}): Observable<any> {
+   return this.fireDB.list(this.propertyPath, (q) => q.child('houses').child('for_rent')).valueChanges();
   }
 
-  getAllHousesForSale(){
-   return this.fireDB.list(this.propertyPath,(query) => query.child('houses').child('for_sale')).valueChanges();
-   
+  getAllHousesForSale() {
+   return this.fireDB.list(this.propertyPath, (query) => query.child('houses').child('for_sale')).valueChanges();
+
   }
 
-  getHouseForRent(properties:any[],searchedProperty:Property):any[]{
-    let matches = []
-    _.forEach(properties,(property) =>{
-      if(this.match(property,searchedProperty)){
+  getListing(properties: any[], searchedProperty: Property): any[] {
+    let matches = [];
+    if (!_.isEmpty(searchedProperty)) {
+      _.forEach(properties, (property) => {
+        if (this.match(property, searchedProperty)) {
         matches.push(property);
       }
-    })
+    });
+    } else {
+      matches = properties;
+    }
 
   return matches;
 
   }
 
 
-  getListingForSale(){
-
-  }
-
-  match(property,searchedProperty){
-    let match:boolean = false;
-    _.isEqual(searchedProperty.location,property.location)&&_.isEqual(searchedProperty.numberOfRooms,property.numberOfRooms)
-    &&property.rent>=searchedProperty.min_price&&property.rent<=searchedProperty.max_price ?
-    match= true : match = false;
+  match(property, searchedProperty) {
+    let match = false;
+    _.isEqual(searchedProperty.location, property.location) && _.isEqual(searchedProperty.numberOfRooms, property.numberOfRooms)
+    && property.rent >= searchedProperty.min_price && property.rent <= searchedProperty.max_price ?
+    match = true : match = false;
 
     return match;
   }

@@ -1,0 +1,30 @@
+<section class="col-xs-12 col-sm-12 col-md-12">
+        <article class="card row">
+          <div class="col-xs-12 col-sm-12 col-md-3">
+            <a href="#" title="Lorem ipsum" class="img-responsive"><img [src]="property.pictureUrl" width="350px" height="200px" /></a>
+          </div>
+         
+          <div class="col-xs-12 col-sm-12 col-md-7 pull-right">
+              <span class="label label-success pull-right">{{property.rent}}/Month</span>
+            <h3><a href="#" title="">{{property.title}}</a></h3>
+            
+            <p>{{property.description}}</p>
+            <div class="col-md-12">
+               <span><a href="#" title="Lorem ipsum"><i class="fa fa-bed fa-2x"></i> {{property.numberOfRooms}}</a> </span> 
+               <span class="space"></span>
+                <span><a href="#" title="Lorem ipsum"><i class="fa fa-map-marker fa-2x"></i> {{property.location}}</a></span>
+            </div>	
+            
+                    <div class="col-xs-12 col-sm-12 col-md-4">
+                        <button class="btn btn-info" (click)="navigate()">Learn More</button>
+                    </div>
+                    
+          </div>
+         
+         
+          <span class="clearfix borda">
+            
+          </span>
+        </article>
+  
+      </section>
