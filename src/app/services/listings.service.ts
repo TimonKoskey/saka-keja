@@ -12,11 +12,13 @@ export class ListingsService {
    }
 
   getAllHousesForRent(query= {}): Observable<any> {
-   return this.fireDB.list(this.propertyPath, (q) => q.child('houses').child('for_rent')).valueChanges();
+   return this.fireDB.list(this.propertyPath, (q) => q.child('houses').child('for_rent'))
+   .valueChanges();
   }
 
   getAllHousesForSale() {
-   return this.fireDB.list(this.propertyPath, (query) => query.child('houses').child('for_sale')).valueChanges();
+   return this.fireDB.list(this.propertyPath, (query) => query.child('houses').child('for_sale'))
+   .valueChanges();
 
   }
 
@@ -44,6 +46,28 @@ export class ListingsService {
     match = true : match = false;
 
     return match;
+  }
+ 
+  getLatest(property1,property2){
+   let latest
+   let latest1=[];
+   let latest2=[];
+   if(property1.length>3){
+      for(let x=1;x<=3;x++){
+        latest1.push(property1[property1.length-x]);
+      }
+   }
+   if(property2.length>3){
+    for(let x=1;x<=3;x++){
+      latest2.push(property2[property2.length-x]);
+    }
+  }else{
+     latest1=property1;
+     latest2=property2;
+   }
+   latest=latest1.concat(latest2);
+   console.log(latest);
+   return latest;
   }
 
 }

@@ -3,16 +3,18 @@
 
     <div class="container">
       <div class="row">
+        <div *ngFor="let result of latest">
         <div class="col-md-4">
           <div class="card">
-            <img src="../assets/img/h3.jpg" alt="Thumbnail Image" class=" img-responsive img-raised img-square">
-            <h4 class="title">Daiman Apartments<br/>
-            <small class="text-muted">Designer</small>
+            <img [src]="result.pictureUrl" alt="Thumbnail Image" class=" img-responsive img-raised img-square">
+            <h4 class="title">{{result.title}}<br/>
+            <small class="text-muted">{{result.location}}</small>
           </h4>
             <a href="#" class="btn btn-success">Learn More</a>
           </div>
         </div>
-        <div class="col-md-4">
+      </div>
+        <!--<div class="col-md-4">
           <div class="card">
             <img src="../assets/img/h1.jpg" alt="Thumbnail Image" class="img-responsive img-raised img-square">
             <h4 class="title">Christian Louboutin<br />
@@ -30,7 +32,7 @@
             <a href="#" class="btn btn-success">Learn More</a>
 
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
 

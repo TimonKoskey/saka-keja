@@ -16,6 +16,8 @@ import { PropertyListComponent } from './property-list/property-list.component';
 import { PropertyComponent } from './property-list/property.component';
 import { PropertyDetailComponent } from './property-detail/property-detail.component';
 import { CarouselComponent } from './property-detail/carousel.component';
+import { ListingsService } from './services/listings.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -38,7 +40,7 @@ import { CarouselComponent } from './property-detail/carousel.component';
     NouisliderModule,
     AppRoutingModule
   ],
-  providers: [AngularFireDatabase],
+  providers: [AngularFireDatabase,ListingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
